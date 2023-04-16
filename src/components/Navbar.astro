@@ -1,17 +1,27 @@
 ---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+const links = ["", "DESTINATION", "CREW", "TECHNOLOGY"];
 
+import logo from '/shared/logo.svg';
 ---
 
 <header class="shadow">
   <div class="container mx-auto py-3 flex justify-between items-center w-100">
-    <a href="#">
-      <img src="#" alt="Logo" />
+    <a href="/" class="">
+      <img src={logo} class="d-block" alt="Logo" />
     </a>
     <nav>
-      <ul class="flex items-center">
-        <li><a href="/" class="p-3">Home</a></li>
-        <li><a href="./about" class="p-3">About</a></li>
-      </ul>
+      {links.map((link, index) => (
+        <li>
+          <a
+            href={link !== "" ? './' + link.toLowerCase() : "/"}
+            class={currentPath == link.toLowerCase() ? "active" : ""}
+          >
+            <span>0{index}</span>{link == "" ? "HOME" : link}
+          </a>
+        </li>
+      ))}
     </nav>
   </div>
 </header>
