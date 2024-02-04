@@ -16,7 +16,7 @@ import logo from '/shared/logo.svg';
         <li>
           <a
             href={link !== "" ? './' + link.toLowerCase() : "/"}
-            class={currentPath == link.toLowerCase() ? "active" : ""}
+            class=`font-barlow-condensed ${currentPath == link.toLowerCase() ? 'active' : ''}`
           >
             <span>0{index}</span>{link == "" ? "HOME" : link}
           </a>
